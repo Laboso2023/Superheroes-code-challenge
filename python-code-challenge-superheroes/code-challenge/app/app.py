@@ -42,7 +42,9 @@ def get_hero_by_id(hero_id):
             "powers": [
                 {"id": power.id, "name": power.name, "description": power.description}
                 for power in hero.powers
-            ],
+            ]
+            if hasattr(hero, "powers")
+            else [],
         }
         return jsonify(hero_data)
     else:
