@@ -95,13 +95,13 @@ def get_or_update_power(power_id):
 def create_hero_power():
     data = request.get_json()
 
-    if not all(key in data for key in ["name", "power_id", "hero_id"]):
+    if not all(key in data for key in ["strength", "power_id", "hero_id"]):
         return make_response(
             jsonify({"errors": ["Missing required fields in request"]}), 400
         )
 
     new_hero_power = HeroPower(
-        strength=data["name"], power_id=data["power_id"], hero_id=data["hero_id"]
+        strength=data["strength"], power_id=data["power_id"], hero_id=data["hero_id"]
     )
 
     db.session.add(new_hero_power)
